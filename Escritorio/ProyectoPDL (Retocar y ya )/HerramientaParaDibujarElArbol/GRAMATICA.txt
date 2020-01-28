@@ -1,0 +1,58 @@
+Terminales = { eof ; ( ) , { &= = && == < } + var id function for int bool string numero cadena return print prompt true false }
+NoTerminales = { SP W S F N FP T A P TP I GP G E EP H R C CP K }
+
+Axioma = SP
+
+Producciones = {
+
+SP -> W
+W -> S W
+W -> F W
+W -> eof
+S -> var T id GP ;
+S -> for ( I ; E ; I ) { A } 
+S -> N 
+S -> lambda
+F -> function FP id ( P ) { A }
+A -> S A
+A -> lambda
+FP -> lambda
+FP -> T
+T -> int
+T -> bool
+T -> string
+P -> lambda
+P -> T id TP 
+TP -> lambda
+TP -> , T id TP
+I -> id G
+G -> &= E
+G -> = E
+G -> H
+GP -> lambda
+GP -> G
+E -> R EP
+E -> ( E ) EP
+EP -> && E
+EP -> lambda
+EP -> == E
+EP -> < R
+EP -> + E
+H -> lambda
+H -> ( C )
+R -> id H
+R -> numero
+R -> cadena
+R -> true
+R -> false
+C -> lambda
+C -> E CP
+CP -> , E CP
+CP -> lambda
+N -> prompt ( id ) ;
+N -> print ( E ) ;
+N -> return K ;
+N -> I ;
+K -> E
+K -> lambda
+}
